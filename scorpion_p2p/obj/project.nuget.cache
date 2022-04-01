@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "HHosXMyziD40qUuig9XmdMdThg9Xy7GUhDY0rUutpwHo+0/GaBF7wtn+TVkUGuKGIuBC13rNJMB8CSjLz6BwhA==",
+  "success": true,
+  "projectFilePath": "/home/ferret/GIT/scorpion_P2P/scorpion_p2p/scorpion_p2p.csproj",
+  "expectedPackageFiles": [
+    "/home/ferret/.nuget/packages/simpletcp.net5/1.0.25/simpletcp.net5.1.0.25.nupkg.sha512"
+  ],
+  "logs": []
+}

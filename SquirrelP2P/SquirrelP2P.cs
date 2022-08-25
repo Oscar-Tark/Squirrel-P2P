@@ -28,7 +28,7 @@ namespace ScorpionP2P
     //Peers that are always online
     public struct scorpion_P2P_static_peers
     {
-        private string[] ip_1ist;
+        private string[] ip_1ist = null;
         public scorpion_P2P_static_peers(string[] ip_list)
         {
             //Fills the default ip list defined by the administrator
@@ -49,17 +49,18 @@ namespace ScorpionP2P
         These destinctions gives peers and clients specific roles within a single object.
         */
 
-        public scorpion_P2P_object(long id, string name, string peer_IP_address, short peer_port, string RSA_priv_path, string RSA_pub_path, protocol_type protocol)
+        public scorpion_P2P_object(long id, string name, string peer_IP_address, int peer_port, string RSA_priv_path, string RSA_pub_path, protocol_type protocol)
         {
             this.id = id;
             this.name = name;
             this.str_ip = peer_IP_address;
-            this.port = (peer_port = null ? 8002 : peer_port);
+            this.port = (peer_port == null ? 8002 : peer_port);
             this.RSA_priv_path = RSA_priv_path;
             this.RSA_pub_path = RSA_pub_path;
-            ip_addr = IPAddress.Parse(this.str_ip == null ? "127.0.0.1" : IP_address);
+            ip_addr = IPAddress.Parse(this.str_ip == null ? "127.0.0.1" : peer_IP_address);
             proto = protocol;
-            server = server_or_null;
+            peer = null;
+            clients = new SimpleTCP.SimpleTcpClient[5];
             return;
         }
 
@@ -73,6 +74,7 @@ namespace ScorpionP2P
                 sctl.ClientDisconnected += Sctl_ClientDisconnected;
                 sctl.DataReceived += Sctl_DataReceived;
                 sctl.Start(this.ip_addr, this.port);
+                this.peer = sctl;
                 return null;
             }
             catch(Exception e)
@@ -81,19 +83,25 @@ namespace ScorpionP2P
             }
         }
 
-        private Exception startClient()
+        internal Exception startClient(string ip, int port)
         {
             SimpleTCP.SimpleTcpClient sctl = new SimpleTCP.SimpleTcpClient();
-            sctl.Connect(ip, port);
-            sctl.DataReceived += Sctl_clientDataReceived;
+            try
+            {
+                sctl.Connect(ip, port);
+                sctl.DataReceived += Sctl_clientDataReceived;
+            }
+            catch(Exception e){ return e; }
+            finally { sctl = null; }
+            return null;
         }
 
-        public void sendAsPeer()
+        public void sendAsPeer(byte[] data)
         {
 
         }
 
-        public void retrieveAsClient()
+        public void retrieveAsClient(string api_str)
         {
 
         }
@@ -102,7 +110,7 @@ namespace ScorpionP2P
         string name;
         string str_ip;
         IPAddress ip_addr;
-        short port = 0;
+        int port = 0;
         long last_active_ticks = 0;
         DateTime last_active_datetime = DateTime.MinValue;
         int ping = -1;
@@ -113,46 +121,51 @@ namespace ScorpionP2P
         SimpleTCP.SimpleTcpClient[] clients;
 
         /*TCP server : Events*/
-        void Sctl_ClientConnected(object sender, TcpClient e)
+        internal void Sctl_ClientConnected(object sender, TcpClient e)
         {
             Console.WriteLine("TCP >> Client " + (IPEndPoint)e.Client.RemoteEndPoint + " connected");
             return;
         }
 
-        void Sctl_ClientDisconnected(object sender, TcpClient e)
+        internal void Sctl_ClientDisconnected(object sender, TcpClient e)
         {
             Console.WriteLine("TCP >> Client " + (IPEndPoint)e.Client.RemoteEndPoint + " disconnected");
             return;
         }
 
-        public void Sctl_DataReceived(object sender, SimpleTCP.Message e)
+        internal void Sctl_DataReceived(object sender, SimpleTCP.Message e)
+        {
+            return;
+        }
+
+        /*Client: Events*/
+        internal void Sctl_clientDataReceived(object sender, SimpleTCP.Message e)
         {
             return;
         }
     };
 
-    public struct protocol_type
+    public enum protocol_type
     {
         //What protocol to use
-        const short tcp = 0x00;
-        const short udp = 0x01;
+        tcp = 0x00,
     };
 
     //Starts a p2p session
     public class ScorpionP2P
     {
-        Dictionary<string, scorpion_P2P_object> peers_and_clients;
+        private Dictionary<string, scorpion_P2P_object> peers_and_clients;
 
         //Server
         public void newP2P(string name, string host_ip_or_null, short host_port_or_null, string RSA_pub_path, string RSA_priv_path)
         {
-            if(RSA_public_path == null || RSA_private_path == null)
-                HANDLE.write_warning("Scorpion server started. No RSA keys have been assigned to this server. Non RSA servers can be read by MITM attacks and other sniffing techniques");
+            if(RSA_pub_path == null || RSA_priv_path == null)
+                Console.WriteLine("Scorpion server started. No RSA keys have been assigned to this server. Non RSA servers can be read by MITM attacks and other sniffing techniques");
         
-            scorpion_P2P_object p2p = new scorpion_P2P_object(++peer_servers.Count, name, host_ip_or_null, host_port_or_null = null ? 8002 : host_port_or_null);
+            scorpion_P2P_object p2p = new scorpion_P2P_object((peers_and_clients.Count+1), name, host_ip_or_null, (host_port_or_null == null ? 8002 : host_port_or_null), RSA_priv_path, RSA_pub_path, protocol_type.tcp);
 
-            var started;
-            if((started = p2p.startServer()) == null)
+            Exception started;
+            if((started = p2p.startPeer()) == null)
                 peers_and_clients.Add(name, p2p);
             return;
         }

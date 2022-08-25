@@ -1,5 +1,0 @@
-/home/ferret/GIT/scorpion_P2P/scorpion_p2p/obj/Debug/net6.0/scorpion_p2p.csproj.AssemblyReference.cache
-/home/ferret/GIT/scorpion_P2P/scorpion_p2p/obj/Debug/net6.0/scorpion_p2p.GeneratedMSBuildEditorConfig.editorconfig
-/home/ferret/GIT/scorpion_P2P/scorpion_p2p/obj/Debug/net6.0/scorpion_p2p.AssemblyInfoInputs.cache
-/home/ferret/GIT/scorpion_P2P/scorpion_p2p/obj/Debug/net6.0/scorpion_p2p.AssemblyInfo.cs
-/home/ferret/GIT/scorpion_P2P/scorpion_p2p/obj/Debug/net6.0/scorpion_p2p.csproj.CoreCompileInputs.cache

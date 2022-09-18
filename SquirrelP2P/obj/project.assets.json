@@ -38,11 +38,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/ferret/GIT/scorpion_P2P/scorpion_p2p/scorpion_p2p.csproj",
-      "projectName": "scorpion_p2p",
-      "projectPath": "/home/ferret/GIT/scorpion_P2P/scorpion_p2p/scorpion_p2p.csproj",
+      "projectUniqueName": "/home/ferret/GIT/Squirrel_Project/Squirrel-P2P/SquirrelP2P/Squirrel-P2P.csproj",
+      "projectName": "Squirrel-P2P",
+      "projectPath": "/home/ferret/GIT/Squirrel_Project/Squirrel-P2P/SquirrelP2P/Squirrel-P2P.csproj",
       "packagesPath": "/home/ferret/.nuget/packages/",
-      "outputPath": "/home/ferret/GIT/scorpion_P2P/scorpion_p2p/obj/",
+      "outputPath": "/home/ferret/GIT/Squirrel_Project/Squirrel-P2P/SquirrelP2P/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/ferret/.nuget/NuGet/NuGet.Config"

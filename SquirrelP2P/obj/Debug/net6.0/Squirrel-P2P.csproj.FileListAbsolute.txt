@@ -1,0 +1,12 @@
+/home/ferret/GIT/Squirrel_Project/Squirrel-P2P/SquirrelP2P/bin/Debug/net6.0/Squirrel-P2P.deps.json
+/home/ferret/GIT/Squirrel_Project/Squirrel-P2P/SquirrelP2P/bin/Debug/net6.0/Squirrel-P2P.dll
+/home/ferret/GIT/Squirrel_Project/Squirrel-P2P/SquirrelP2P/bin/Debug/net6.0/ref/Squirrel-P2P.dll
+/home/ferret/GIT/Squirrel_Project/Squirrel-P2P/SquirrelP2P/bin/Debug/net6.0/Squirrel-P2P.pdb
+/home/ferret/GIT/Squirrel_Project/Squirrel-P2P/SquirrelP2P/obj/Debug/net6.0/Squirrel-P2P.csproj.AssemblyReference.cache
+/home/ferret/GIT/Squirrel_Project/Squirrel-P2P/SquirrelP2P/obj/Debug/net6.0/Squirrel-P2P.GeneratedMSBuildEditorConfig.editorconfig
+/home/ferret/GIT/Squirrel_Project/Squirrel-P2P/SquirrelP2P/obj/Debug/net6.0/Squirrel-P2P.AssemblyInfoInputs.cache
+/home/ferret/GIT/Squirrel_Project/Squirrel-P2P/SquirrelP2P/obj/Debug/net6.0/Squirrel-P2P.AssemblyInfo.cs
+/home/ferret/GIT/Squirrel_Project/Squirrel-P2P/SquirrelP2P/obj/Debug/net6.0/Squirrel-P2P.csproj.CoreCompileInputs.cache
+/home/ferret/GIT/Squirrel_Project/Squirrel-P2P/SquirrelP2P/obj/Debug/net6.0/Squirrel-P2P.dll
+/home/ferret/GIT/Squirrel_Project/Squirrel-P2P/SquirrelP2P/obj/Debug/net6.0/ref/Squirrel-P2P.dll
+/home/ferret/GIT/Squirrel_Project/Squirrel-P2P/SquirrelP2P/obj/Debug/net6.0/Squirrel-P2P.pdb
